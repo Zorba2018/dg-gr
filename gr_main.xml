@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<mathbook>
+    <article>
+        <frontmatter>
+
+            <titlepage>
+                <author>
+                    <personname>Marian Majda</personname>
+                </author>
+            </titlepage>
+
+        </frontmatter>
+        <section>
+            <title>Preface</title>
+            <p>This is an open source textbook on general relativity. It aims escpecially at reviewing the mathematics behind it very closely. The author thinks this is especially important as nowadays a lot of physical theories aimed at unifying general relativity and quantum field theory aim at discretizing the smooth concepts found in general relativity. Similarily, in numerical relativity smooth, continuous objects have to replaced by discrete objects. In each of the aforementioned cases, the replacements have to performed with full care and detailed understanding of the nature of the mathematical objects both in the smooth and discrete case.</p>
+
+        </section>
+
+        <section>
+            <title>Topological manifolds</title>
+            <introduction>
+                <definition>
+                    <title>locally homeomorphic, chart</title>
+                    <statement><p>A topological space <m>Y</m> is called <term>locally homeomorphic</term> to a topological space<m>X</m> if for any <m>x \in X</m> there is a homeomorphism <m>u: u\to u(U)\subset X</m> where <m>U</m> is an open neighborhood of <m>x</m> in <m>M</m>. The pair <m>(U, u)</m> is called a <term>chart</term> on <m>Y</m>.</p>
+                    </statement>
+                </definition>
+                
+            </introduction>
+            <subsection>
+                <title>Separability</title>
+                <definition>
+                    <title>Separated by neighbourhoods, Hausdorff space</title>
+                    <statement>
+                        <p>
+                            <ol>
+                                <li>Points <m>x</m> and <m>y</m> in a topological space <m>X</m> can be <term>separated by neighbourhoods</term> if there exists a neighbourhood <m>U</m> of <m>x</m> and a neighbourhood <m>V</m> of <m>y</m> such that <m>U</m> and <m>V</m> are disjoint.</li>
+                                <li>A topological space <m>X</m> is a <term>Hausdorff space</term> if all distinct points in <m>X</m> are pairwise neighborhood-separable.</li>
+                            </ol>
+                        </p>
+                    </statement>
+                </definition>
+
+            </subsection>
+            <conclusion>
+                <p>Often the latter topological space is assumed to be of a simple, well-known structure. This still allows the space <m>Y</m> to posses an interesting structure, since it only has to look locally like <m>Y</m>. The concept of a manifold lives from this idea that the local structure of the manifold is very well prescribed, but the locally more or less uninteresting parts can be attached in many ways, to form an interesting object.</p>
+                <p>A topological manifold is a separable Hausdorff space <m>M</m> which is locally homeomorphic to <m>R^n</m>. </p>
+            </conclusion>
+        </section>
+        <section>
+            <title>Smooth manifolds defined without charts</title>
+            <subsection>
+                <title>Categories</title>
+                <definition>
+                    <title>Category, morphism</title>
+                    <statement>
+                    <p>
+                        A <term>category</term> <m>\mathsf{C}</m> consists of 
+                        <ul>
+                            <li>
+                                a class <m>\operatorname{ob}(\mathsf{C})</m> of objects.
+                            </li>
+                            <li>
+                                a class <m>\operatorname{hom}</m> of <term>morphisms</term> between the objects. Each morphism <m>f</m>has a source <m>a</m> and a target <m>b</m> where <m>a</m> and <m>b</m> are in <m>\operatorname{ob}(\mathsf{C})</m>.
+                                <notation>
+                                    One writes <m>f:a\to b</m> and can express this by saying ''<m>f</m> is a morphism from <m>a</m> to <m>b</m>''.
+                                </notation>
+                            </li>
+                            <li>
+                                a binary operation for every three objects <m>a</m>, <m>b</m> and <m>c</m>, namely a binary operation  <m>\operatorname{hom}(a,b)\times\operatorname{hom}(b,c)\to \operatorname{hom}(a,c)</m> called the <term>composition of morphisms</term>.
+                            </li>
+                        </ul>
+                        such that the following axioms hold:
+                        <ul>
+                            <li>
+                                (assiociativity) if <m>f:a\to b</m>, <m>g:b\to c</m> and <m>h:c\to d</m> then
+                                <me>
+                                    f;(g;h)=(f;g);h ,
+                                </me>
+                                and
+                            </li>
+                            <li>
+                                (identity) for every object <m>x</m>, there exists a morphism <m>1_x:x\to x</m> called the <term>identity morphism</term> for <m>x</m>, such that every morphism <m>f:a\to x</m> and every morphism <m>g:x\to b</m>, it holds that <m>f;1_x=f</m> and that <m>1_x;g = g</m>.
+                            </li>
+                        </ul>
+                    </p>
+                    </statement>
+                </definition>
+                <definition>
+                    <title>hom-class</title>
+                    <notation>
+                        <usage><m>f;g</m></usage>
+                        <description>
+                            <p>The coposition of two morphisms <m>f:a\to b</m> and <m>g:b\to c</m> is written as <m>f;g</m>.</p>
+                        </description>
+                    
+                    </notation>
+                    <statement>
+                        <p>
+                        One writes <m>\operatorname{hom}_\mathsf{C}(a,b)</m>, or, if the category is clear from the context, <m>\operatorname{hom}(a,b)</m>, to denote the <term>hom-class</term> of all morphisms from <m>a</m> to <m>b</m>.
+                        </p>
+                    </statement>
+
+                </definition>
+                
+                <p>Here we use the so called diagrammatic order which makes compositions more readable to the non-expert.</p>
+            </subsection>
+            <subsection>
+                <definition>
+                    <p>Let <m>\mathsf{C}</m> and <m>\mathsf{D}</m> be categories. A <term>functor</term> <m>F</m> from <m>\mathsf{C}</m> to <m>\mathsf{D}</m> is a mappigng that
+                    <ul>
+                        <li>
+                            associates to each object <m>x</m> in <m>\mathsf{C}</m> an object <m>F(x)</m> in <m>\mathsf{D}</m>.
+                        </li>
+                        <li><p>
+                            associates to each morphism <m>f:x\to y</m> in <m>\mathsf{C}</m> a morphism <m>F(f):F(x)\to F(y)</m> in <m>\mathsf{D}</m> such that the following two conditions hold:
+                            <ul>
+                                <li>
+                                    <m>F(1_x)=1_{F(x)}</m> for every object <m>x</m> in <m>\mathsf{C}</m>.
+                                </li>
+                                <li>
+                                    <m>F(f;g)=F(f);F(g)</m> for all morphisms <m>f:X\to Y</m> and <m>g:Y\to Z</m> in <m>\mathsf{C}</m>.
+                                </li>
+                            </ul>
+                            </p>
+                        </li>
+                    </ul>
+                    </p>
+                </definition>
+            </subsection>
+            <subsection>
+                <title>Sheaves</title>
+                <definition>
+                    <title>Presheaves</title>
+                    <p>
+                        Let <m>X</m> be a topological space, and let <m>\mathsf{C}</m> be a category. A <term>presheaf</term> <m>F</m> on <m>X</m> is a functor with values in <m>\mathsf{C}</m> given by the following data:
+                        <p>
+                            <ul>
+                                <li>To each open set <m>U</m> of <m>X</m>, there corresponds an object <m>F(U)</m> in <m>\mathsf{C}</m></li>
+                                <li>To each inclusion of open sets <m>V \subset U</m>, there corresponds a morphism <m>\operatorname{res}_{V,U}\colon F(U)\rightarrow F(V)</m> in the category <m>\mathsf{C}</m>.</li>
+                            </ul>
+                            The morphisms <m>\operatorname{res}_{V,U}</m> are called <term>restriction morphisms</term>. These morhpisms áre required to satisfy the following two properties:
+                             <ul>
+                                <li>For every open set <m>U</m> of <m>X</m>, the restriction morphism  <m>\operatorname{res}_{U,U}:F(U)\to F(U)</m> is the identity morphism on <m>F(U)</m>.</li>
+                                <li>For any triple of open sets <m>(W,V,U)</m>, with <m>W\subset V\subset U\subset X</m>, it holds that <me>\operatorname{res}_{W,V}\circ \operatorname{res}_{V,U} = \operatorname{res}_{W,U}</me>.</li>
+                            </ul>
+                        </p>
+
+
+                    </p>
+                </definition>
+                <definition>
+                    <title>Ringed space, structure sheaf</title>
+                    <P>A <term>ringed space</term> <m>(X, O_X)</m> is a topological space <m>X</m> together with a sheaf of rings <m>O_X</m> on <m>X</m>. The sheaf <m>O_X</m> is called the <term>structure sheaf</term> of <m>X</m>.</P>
+                </definition>
+
+            </subsection>
+            <definition>
+                <title><m>\mathcal{C}_X</m>, sheaves of continuous functions</title>
+                <p>
+                    Let <m>\mathcal{C}_X</m> be the sheaf of real-valued continuous functions on a topological space <m>X</m>. Subsheaves of <m>R</m>-algebras of <m>\mathcal{C}_X</m> are said to be <term>sheaves of continuous functions on <m>X</m></term>.
+                </p>
+            </definition>
+            
+
+                <!-- Definitions. Let C X be the sheaf of real valued continuous functions on a topo-
+logical space X. Subsheaves of R-algebras of C X are said to be sheaves of
+continuous functions on X. A reduced ringed space is a pair (X, O X )
+where X is a topological space and O X is a sheaf of continuous functions on X
+(i.e., O X (U ) is a subalgebra of the algebra C(U, R) of all real valued continuous
+functions on U containing all constant functions, for any open set U ⊆ X). -->
+        </section>
+        
+    </article>
+</mathbook>
